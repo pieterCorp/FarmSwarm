@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace FarmSwarm.data.Entities
+﻿namespace FarmSwarm.data.Entities
 {
     public class Location : EntityBase 
     {
-        public virtual Condition CurrentCondition { get; set; }
-        public virtual ICollection<Condition> ConditionHistory { get; set; }
-        public virtual GreenHouse CurrentGreenHouse { get; set; }
+        public int DeckId { get; set; }
+        public virtual Deck Deck { get; set; }        
+        public int DeckPosition { get; set; }
     }
 }

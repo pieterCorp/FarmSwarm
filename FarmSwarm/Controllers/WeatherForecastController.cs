@@ -40,15 +40,15 @@ namespace FarmSwarm.Controllers
             return "move";
         }
 
-        [HttpPost]
-        public ActionResult PostSomtin(TestDto test)
-        {
-            var iets = test;
-            Console.WriteLine(iets.Id.ToString());
-            Console.WriteLine(iets.Humidity.ToString());
-            Console.WriteLine(iets.Temperature.ToString());
-            Console.WriteLine(iets.LightIntensity.ToString());
-            return Ok("success baby yeah!");
-        }
+        //[HttpPost]
+        //public ActionResult PostSomtin(TestDto test)
+        //{
+        //    var iets = test;
+        //    Console.WriteLine(iets.Id.ToString());
+        //    Console.WriteLine(iets.Humidity.ToString());
+        //    Console.WriteLine(iets.Temperature.ToString());
+        //    Console.WriteLine(iets.LightIntensity.ToString());
+        //    return Ok("success baby yeah!");
+        //}
     }
 }

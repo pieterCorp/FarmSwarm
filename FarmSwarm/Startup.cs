@@ -1,4 +1,8 @@
+using FarmSwarm.Business.Configuration;
+using FarmSwarm.Business.Services;
 using FarmSwarm.data.DataBase;
+using FarmSwarm.data.Entities;
+using FarmSwarm.data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +38,15 @@ namespace FarmSwarm
             {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
             });
+
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+
+            services.AddScoped<IGenericRepo<State>, GenericRepo<State>>();
+            services.AddScoped<IGreenHouseRepo, GreenHouseRepo>();
+
+            services.AddScoped<IStateService, StateService>();
+            services.AddScoped<IGreenHouseService, GreenHouseService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

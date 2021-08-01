@@ -1,6 +1,6 @@
 ﻿namespace FarmSwarm.Business.Dto
 {
-    public class TestDto
+    public class SensorDataDto
     {
         public int Id { get; set; }
         public float Temperature { get; set; }

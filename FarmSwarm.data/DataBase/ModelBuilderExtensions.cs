@@ -8,10 +8,12 @@ namespace FarmSwarm.data.DataBase
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            SeedGreenHouse(modelBuilder);
-            SeedPlants(modelBuilder);            
+            SeedGreenHouses(modelBuilder);
+            SeedPlants(modelBuilder);
+            SeedDecks(modelBuilder);
+            SeedLocations(modelBuilder);
         }
-        private static void SeedGreenHouse(ModelBuilder modelBuilder)
+        private static void SeedGreenHouses(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GreenHouse>(x =>
             {
@@ -34,6 +36,34 @@ namespace FarmSwarm.data.DataBase
 
                     );
             });
-        }        
+        }
+        private static void SeedDecks(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Deck>(x =>
+            {
+                x.HasData(
+
+                    new Deck { Id = 1, CreatedAt = DateTime.Now },
+                    new Deck { Id = 2, CreatedAt = DateTime.Now }
+
+                    );
+            });
+        }
+        private static void SeedLocations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Location>(x =>
+            {
+                x.HasData(
+
+                    new Location { Id = 1, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 1 },
+                    new Location { Id = 2, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 2 },
+                    new Location { Id = 3, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 3 },
+                    new Location { Id = 4, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 4 },
+                    new Location { Id = 5, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 5 },
+                    new Location { Id = 6, CreatedAt = DateTime.Now, DeckId = 1, DeckPosition = 6 }
+
+                    );
+            });
+        }
     }
 }

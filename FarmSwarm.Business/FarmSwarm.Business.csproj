@@ -12,9 +12,4 @@
     <ProjectReference Include="..\FarmSwarm.data\FarmSwarm.data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

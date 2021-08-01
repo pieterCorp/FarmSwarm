@@ -1,6 +1,5 @@
 ﻿using FarmSwarm.data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace FarmSwarm.data.DataBase 
 {
@@ -8,9 +7,10 @@ namespace FarmSwarm.data.DataBase
     {
         public DbSet<Plant> Plants { get; set; }
         public DbSet<GreenHouse> GreenHouses { get; set; }
-        public DbSet<Condition> Conditions { get; set; }
+        public DbSet<SensorData> SensorData { get; set; }
         public DbSet<Deck> Decks { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<State> States { get; set; }
 
         public FarmSwarmContext(DbContextOptions options)
             : base(options)
@@ -18,10 +18,7 @@ namespace FarmSwarm.data.DataBase
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Seed();
-
-           
-        }
-        
+            modelBuilder.Seed();           
+        }        
     }
 }

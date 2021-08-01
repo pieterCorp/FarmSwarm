@@ -4,14 +4,16 @@ using FarmSwarm.data.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FarmSwarm.data.Migrations
 {
     [DbContext(typeof(FarmSwarmContext))]
-    partial class FarmSwarmContextModelSnapshot : ModelSnapshot
+    [Migration("20210731234449_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
