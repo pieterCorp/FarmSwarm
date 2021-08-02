@@ -1,6 +1,7 @@
 ﻿using FarmSwarm.Business.Dto;
 using FarmSwarm.Business.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace FarmSwarm.Controllers
@@ -27,6 +28,7 @@ namespace FarmSwarm.Controllers
         [HttpPost]
         public async Task<ActionResult> AddState(StateDto stateDto)
         {
+            stateDto.CreatedAt = DateTime.Now;
             return Ok(await _stateService.AddState(stateDto));
         }
     }
