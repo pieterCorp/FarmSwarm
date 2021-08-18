@@ -19,9 +19,6 @@ namespace FarmSwarm.Business.Services
 
         public async Task<bool> AddState(StateDto stateDto)
         {
-
-
-
             return await _stateRepo.AddEntityAsync(_mapper.Map<State>(stateDto));
         }
     }

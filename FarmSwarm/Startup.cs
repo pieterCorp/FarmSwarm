@@ -3,6 +3,8 @@ using FarmSwarm.Business.Services;
 using FarmSwarm.data.DataBase;
 using FarmSwarm.data.Entities;
 using FarmSwarm.data.Repositories;
+using FarmSwarm.WebSocketServer;
+using FarmSwarm.WebSocketServer.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-//run this line in terminal to access site from remote devices: npx iisexpress-proxy 20410 to 3000
+//run this line in terminal to access site from remote devices: npx iisexpress-proxy 59879 to 3000
 
 namespace FarmSwarm
 {
@@ -19,7 +21,7 @@ namespace FarmSwarm
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;           
         }
 
         public IConfiguration Configuration { get; }
@@ -40,6 +42,8 @@ namespace FarmSwarm
             });
 
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+
+            services.AddSingleton<IWebSocketServerConnectionManager, WebSocketServerConnectionManager>();
 
             services.AddScoped<IGenericRepo<State>, GenericRepo<State>>();
             services.AddScoped<IGreenHouseRepo, GreenHouseRepo>();
@@ -63,11 +67,13 @@ namespace FarmSwarm
 
             app.UseAuthorization();
             app.UseAuthentication();
-            
+
+            app.UseWebSockets();
+            app.UseWebSocketServer();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers();                
             });
         }
     }
